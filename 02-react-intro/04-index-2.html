@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>React Intro</title>
+	<script src="react.development.js"></script>
+	<script src="react-dom.development.js"></script>
+	<script src="babel.min.js"></script>
+	<script type="text/babel">
+		
+		class Greeter extends React.Component{
+
+			state = { greeting : 'Have a nice day!'};
+			userName = '' ;
+			txtUserNameRef = React.createRef();
+
+			onBtnGreetClick = () => {
+				let userName = this.userName;
+				let greeting = `Hi ${userName}, ${this.props.message}`
+				this.setState({greeting  : greeting});
+			}
+			
+			/*onUserNameChange = (evt) => {
+
+				this.userName = evt.target.value;
+			}*/
+			render = () => {
+				console.log('Greeter rendered');
+				return(
+					<div>
+						<h1>Greeter</h1>
+						<hr/>
+						<label>User Name :</label>
+						<input type="text" defaultValue="Magesh" onChange={ evt => this.userName = evt.target.value }/>
+						{/*<span> [ {this.state.userName.length} ] </span>*/}
+						<input type="button" value="Greet" onClick={this.onBtnGreetClick}/>
+						<div>{this.state.greeting}</div>
+					</div>
+				);
+			}
+		}
+
+		let greetMsg = 'Have a good day!';
+		ReactDOM.render(<Greeter message={greetMsg} />
+			, document.getElementById('root'));
+		
+	</script>
+</head>
+<body>
+	<div id="root"></div>
+</body>
+</html>
