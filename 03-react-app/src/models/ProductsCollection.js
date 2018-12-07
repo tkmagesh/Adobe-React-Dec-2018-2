@@ -12,5 +12,8 @@ class ProductsCollection extends EventEmitter{
 		return [...this._list];
 	}
 
+	getCount(){
+		return this._list.length;
+	}
 }
 export default ProductsCollection;

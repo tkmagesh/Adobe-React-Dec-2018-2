@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class ProductCount extends Component{
 	render(){
 		return(
-			<div>{this.props.data}</div>
+			<div>{this.props.data}</div> 
 		)
 	}
 }
