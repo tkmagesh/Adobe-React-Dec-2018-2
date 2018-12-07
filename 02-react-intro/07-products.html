@@ -13,6 +13,7 @@
 		
 	</style>
 	<script type="text/babel">
+	(function(){
 		class EventEmitter{
 			_listeners = [];
 
@@ -86,7 +87,7 @@
 		}
 		renderProducts();
 		model.subscribe(renderProducts);
-
+	})();
 	</script>
 </head>
 <body>
