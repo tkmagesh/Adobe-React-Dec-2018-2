@@ -4,5 +4,5 @@ const { override, addBabelPlugin, addDecoratorsLegacy, disableEsLint } = require
 module.exports = override(
 	addBabelPlugin('babel-plugin-styled-components'),
 	addDecoratorsLegacy(),
-	disableEsLint(),
+	disableEsLint()
 );
