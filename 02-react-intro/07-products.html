@@ -46,7 +46,12 @@
 				newProductName : ''
 			};
 
-			onAddNewClick = () => {
+			constructor(props){
+				super(props);
+				//this.onAddNewClick = this.onAddNewClick.bind(this);
+			}
+
+			onAddNewClick () {
 				this.props.model.addNew(this.state.newProductName);
 				this.setState({newProductName : ''});
 			}
@@ -59,7 +64,7 @@
 						<label> Product Name :</label>
 						<input type="text" onChange={evt => this.setState({newProductName : evt.target.value})} value={this.state.newProductName}/>
 						<span> [ {this.state.newProductName.length} ] </span>
-						<input type="button" value="Add New" onClick={ this.onAddNewClick }/>
+						<input type="button" value="Add New" onClick={ () => this.onAddNewClick() }/>
 						<ol>
 							{productItems}
 						</ol>
