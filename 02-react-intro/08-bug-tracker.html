@@ -71,7 +71,16 @@
 			};
 
 			addNew(bugName){
-				this._list.push(bugName);
+				let newBug = {
+					name : bugName,
+					isClosed : false
+				};
+				this._list.push(newBug);
+				this.triggerChange();
+			}
+
+			toggle(bug){
+				bug.isClosed = !bug.isClosed;
 				this.triggerChange();
 			}
 		}
@@ -87,7 +96,9 @@
 					bugs = model.getAll(),
 					bugItems = bugs.map((bug, index) => (
 						<li key={index}>
-							<span className="bugname">{bug}</span>
+							<span className="bugname" onClick={() => model.toggle(bug)}>
+								{JSON.stringify(bug)}
+							</span>
 						</li>
 					));
 				return(
