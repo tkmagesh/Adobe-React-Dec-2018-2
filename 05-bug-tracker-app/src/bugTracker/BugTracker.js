@@ -2,12 +2,14 @@ import React, { Component } from 'react'
 import { observer } from 'mobx-react';
 
 import BugItem from './BugItem';
+import BugStats from './BugStats';
+import BugEdit from './BugEdit';
+
 
 @observer class BugTracker extends Component{
-	state = { newBugName : '' };
-
-	onAddNewClick = () => {
-		this.props.model.addNew(this.state.newBugName);
+	
+	componentDidMount(){
+		this.props.model.load();
 	}
 
 	render(){
@@ -18,11 +20,8 @@ import BugItem from './BugItem';
 				));
 		return(
 			<React.Fragment>
-				<section className="stats">
-					<span className="closed">1</span>
-					<span> / </span>
-					<span>{bugs.length}</span>
-				</section>
+				{/*<input type="button" value="Load" onClick={() => model.load()} />*/}
+				<BugStats stats={model.stats} />
 				<section className="sort">
 					<label htmlFor="">Order By :</label>
 					<select name="" id="">
@@ -32,11 +31,7 @@ import BugItem from './BugItem';
 					<label htmlFor="">Descending ? :</label>
 					<input type="checkbox" name="" id="" />
 				</section>
-				<section className="edit">
-					<label htmlFor="">Bug Name :</label>
-					<input type="text" onChange = { evt => this.setState({newBugName : evt.target.value}) } />
-					<input type="button" value="Add New" onClick={this.onAddNewClick}/>
-				</section>
+				<BugEdit addNew={model.addNew} />
 				<section className="list">
 					<ol>
 						{bugItems}

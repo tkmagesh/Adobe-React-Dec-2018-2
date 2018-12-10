@@ -9,5 +9,9 @@ import * as mobx from 'mobx';
 window['mobx'] = mobx;
 window['model'] = new BugsCollectionModel();
 
+import axios from 'axios';
+
+window['axios'] = axios;
+
 ReactDOM.render(<BugTracker model={model} />,
 	document.getElementById('root'));

@@ -5,10 +5,11 @@ import { observer } from 'mobx-react';
 @observer class BugItem extends Component{
 	render(){
 		let { bug } = this.props;
+		let bugStyle= 'bugname ' + (bug.isClosed ? ' closed' : '');
 		return(
 			<li>
-				<span className="bugname" onClick={() => bug.toggle()} >
-					{JSON.stringify(bug)}
+				<span className={bugStyle} onClick={() => bug.toggle()} >
+					{bug.name}
 				</span>
 			</li>
 		)

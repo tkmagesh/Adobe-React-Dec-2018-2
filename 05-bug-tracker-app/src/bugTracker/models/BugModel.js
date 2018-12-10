@@ -4,9 +4,13 @@ class BugModel{
 	@observable name  = '';
 	@observable isClosed = false;
 
-	constructor(bugName){
-		this.name = bugName;
+	constructor({name, id = 0, isClosed = false, createdAt}){
+		this.name = name;
+		this.id = id;
+		this.isClosed = isClosed;
+		this.createdAt = createdAt || new Date();
 	}
+
 	toggle(){
 		this.isClosed = !this.isClosed;
 	}
